@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#090511">
+<title>For Bita ✦</title>
+<style>
+:root{--pink:#ffb6f2;--lilac:#c9a2ff;--ink:#090511}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{font-family:Georgia,"Times New Roman",serif;color:#fff5ff;background:radial-gradient(ellipse at 50% 42%,#29133f 0%,#13091f 43%,#07040d 100%);display:grid;place-items:center}
+#sky,.glow{position:absolute;inset:0;pointer-events:none}
+#sky{width:100%;height:100%;z-index:0}
+.glow{background:radial-gradient(ellipse at 50% 75%,#b94bff16,transparent 43%),linear-gradient(180deg,#07040b30,transparent 35%,#06030b70);z-index:1}
+.page{position:relative;z-index:2;width:min(100%,480px);height:100%;min-height:550px;padding:calc(env(safe-area-inset-top) + 25px) 24px calc(env(safe-area-inset-bottom) + 22px);display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center}
+.eyebrow{font:600 10px/1.4 system-ui,sans-serif;letter-spacing:.32em;text-transform:uppercase;color:#d5b9ffb8;margin-top:4px}
+h1{font-size:clamp(34px,9vw,48px);line-height:1.02;font-weight:normal;font-style:italic;letter-spacing:-.04em;margin:14px 0 10px;text-shadow:0 0 25px #ee8cff60}
+h1 span{color:var(--pink)}
+.subtitle{font:13px/1.7 system-ui,sans-serif;letter-spacing:.04em;color:#d9c8e6;margin:0 auto;max-width:280px}
+.scene{position:relative;width:min(78vw,330px);aspect-ratio:1;display:grid;place-items:center;margin:-4px 0}
+.orbit{position:absolute;width:90%;height:90%;border:1px solid #e8b4ff26;border-radius:50%;transform:rotate(-22deg);box-shadow:inset 0 0 35px #b24cff0c,0 0 30px #a34cff0b}
+.orbit:before,.orbit:after{content:"";position:absolute;width:5px;height:5px;background:#ffe0ff;border-radius:50%;box-shadow:0 0 12px 4px #df8aff;top:9%;left:16%}
+.orbit:after{top:auto;left:auto;right:7%;bottom:23%;width:3px;height:3px}
+.core{position:relative;width:58%;aspect-ratio:1;display:grid;place-items:center;filter:drop-shadow(0 0 22px #d94dff42);animation:float 5s ease-in-out infinite}
+.core svg{width:100%;height:100%;overflow:visible}
+.heart-line{fill:#ff9eea0a;stroke:url(#heartGradient);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:0;filter:drop-shadow(0 0 5px #ff8fe9)}
+.core:before{content:"";position:absolute;inset:18%;border-radius:50%;background:#f5a5ff0a;filter:blur(18px)}
+.center-note{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:140%;font-size:clamp(17px,4.8vw,22px);font-style:italic;color:#fff0ff;text-shadow:0 0 18px #ff83ecb0}
+.center-note small{display:block;margin-top:10px;font:9px system-ui,sans-serif;letter-spacing:.25em;color:#d9b4ffb8;text-transform:uppercase}
+.message-card{width:100%;max-width:340px;padding:18px 20px 17px;border:1px solid #e6b6ff2b;border-radius:20px;background:linear-gradient(135deg,#ffffff0b,#d6a0ff08);box-shadow:0 12px 50px #00000020,inset 0 1px #ffffff0a;backdrop-filter:blur(12px)}
+.message-card .label{font:9px system-ui,sans-serif;letter-spacing:.26em;text-transform:uppercase;color:#d8baffb8;margin-bottom:10px}
+.message{font-size:17px;line-height:1.5;font-style:italic;color:#fff0fc}
+.controls{display:flex;flex-direction:column;align-items:center;gap:11px;width:100%;margin-top:14px}
+button{appearance:none;border:1px solid #f3b8ff65;border-radius:999px;background:linear-gradient(100deg,#7d3ba8,#b34f9b);color:white;padding:13px 24px;font:600 11px system-ui,sans-serif;letter-spacing:.12em;box-shadow:0 0 28px #b54cff2b;cursor:pointer;transition:transform .2s,box-shadow .2s}
+button:active{transform:scale(.96);box-shadow:0 0 35px #e98aff70}
+.hint{font:10px system-ui,sans-serif;letter-spacing:.08em;color:#bca9ce99}
+.footer{font:10px system-ui,sans-serif;letter-spacing:.18em;color:#a78bb67d;text-transform:uppercase;margin-top:12px}
+.spark{position:absolute;pointer-events:none;z-index:3;animation:rise var(--dur,3s) ease-out forwards;left:var(--x);top:var(--y);font-size:var(--size,15px);color:var(--color,#ffb3f3);text-shadow:0 0 12px currentColor}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-9px) rotate(2deg)}}
+@keyframes rise{0%{opacity:0;transform:translate(-50%,0) scale(.5) rotate(0)}15%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--drift,20px)),-150px) scale(1.3) rotate(25deg)}}
+@media(min-height:780px){.page{padding-top:calc(env(safe-area-inset-top) + 38px);padding-bottom:calc(env(safe-area-inset-bottom) + 30px)}.scene{width:min(78vw,350px)}}
+@media(max-height:650px){.page{padding-top:14px;padding-bottom:12px}.eyebrow{font-size:8px}h1{font-size:32px;margin:7px 0}.scene{width:min(52vh,250px)}.message-card{padding:12px 16px}.message{font-size:15px}.controls{margin-top:8px;gap:7px}button{padding:10px 20px}.footer{margin-top:4px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas><div class="glow"></div>
+<main class="page">
+  <header>
+    <div class="eyebrow">a little universe, just for you</div>
+    <h1>For <span>Bita</span>,<br>my favorite star.</h1>
+    <p class="subtitle">Somewhere between all these stars,<br>my heart found its home.</p>
+  </header>
+  <section class="scene" aria-label="A glowing heart in a galaxy">
+    <div class="orbit"></div>
+    <div class="core">
+      <svg viewBox="0 0 200 190" role="img" aria-label="Glowing heart">
+        <defs><linearGradient id="heartGradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe1ff"/><stop offset=".48" stop-color="#ff9be8"/><stop offset="1" stop-color="#a989ff"/></linearGradient></defs>
+        <path class="heart-line" pathLength="1" d="M100 169 C83 151 20 107 20 61 C20 20 70 12 100 49 C130 12 180 20 180 61 C180 107 117 151 100 169Z"/>
+      </svg>
+      <div class="center-note">Bita <small>you are my magic</small></div>
+    </div>
+  </section>
+  <section class="message-card">
+    <div class="label">a note from my heart</div>
+    <div class="message">You are my favorite person in this world. ❤️</div>
+  </section>
+  <div class="controls">
+    <button id="surprise" type="button">MAKE A WISH ✦</button>
+    <div class="hint">tap the button and watch the stars</div>
+  </div>
+  <footer class="footer">made of stardust &amp; love</footer>
+</main>
+<script>
+(() => {
+  const canvas = document.getElementById('sky'), ctx = canvas.getContext('2d');
+  let w=0,h=0,dpr=1,stars=[],raf;
+  function resize(){
+    dpr=Math.min(window.devicePixelRatio||1,2);w=innerWidth;h=innerHeight;
+    canvas.width=w*dpr;canvas.height=h*dpr;canvas.style.width=w+'px';canvas.style.height=h+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    stars=Array.from({length:Math.min(150,Math.floor(w*h/4200))},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.25+.2,a:Math.random()*.6+.12,s:Math.random()*.018+.004,p:Math.random()*Math.PI*2}));
+  }
+  function draw(t){
+    ctx.clearRect(0,0,w,h);
+    for(const s of stars){
+      const tw=(Math.sin(t*s.s+s.p)+1)/2;
+      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${tw>.7?'255,204,255':'207,177,255'},${s.a*(.5+tw*.8)})`;ctx.fill();
+      if(tw>.96&&s.r>1){ctx.strokeStyle=`rgba(255,210,255,${tw*.4})`;ctx.lineWidth=.5;ctx.beginPath();ctx.moveTo(s.x-4,s.y);ctx.lineTo(s.x+4,s.y);ctx.moveTo(s.x,s.y-4);ctx.lineTo(s.x,s.y+4);ctx.stroke();}
+    }
+    raf=requestAnimationFrame(draw);
+  }
+  resize();raf=requestAnimationFrame(draw);addEventListener('resize',resize);
+  const colors=['#ffb7f1','#d6b2ff','#fff0ff','#ff8edb'];
+  function burst(count=28){
+    const scene=document.querySelector('.scene'),r=scene.getBoundingClientRect();
+    for(let i=0;i<count;i++){
+      const el=document.createElement('span');el.className='spark';el.textContent=Math.random()>.25?'♥':'✦';
+      el.style.setProperty('--x',(r.left+r.width*(.2+Math.random()*.6))+'px');
+      el.style.setProperty('--y',(r.top+r.height*(.42+Math.random()*.4))+'px');
+      el.style.setProperty('--size',(9+Math.random()*17)+'px');
+      el.style.setProperty('--dur',(1.8+Math.random()*2.2)+'s');
+      el.style.setProperty('--drift',(-70+Math.random()*140)+'px');
+      el.style.setProperty('--color',colors[Math.floor(Math.random()*colors.length)]);
+      document.body.appendChild(el);el.addEventListener('animationend',()=>el.remove(),{once:true});
+    }
+  }
+  document.getElementById('surprise').addEventListener('click',()=>{
+    burst(42);
+    const b=document.getElementById('surprise');b.textContent='A WISH FOR YOU ♥';
+    if(navigator.vibrate) navigator.vibrate([25,35,25]);
+    setTimeout(()=>b.textContent='MAKE A WISH ✦',2200);
+  });
+  let last=0;document.addEventListener('pointerdown',e=>{if(Date.now()-last>160){last=Date.now();const el=document.createElement('span');el.className='spark';el.textContent='♥';el.style.setProperty('--x',e.clientX+'px');el.style.setProperty('--y',e.clientY+'px');el.style.setProperty('--size','16px');el.style.setProperty('--dur','2s');el.style.setProperty('--drift',(Math.random()*40-20)+'px');document.body.appendChild(el);el.addEventListener('animationend',()=>el.remove(),{once:true});}});
+})();
+</script>
+</body>
+</html>
